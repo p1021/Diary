@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="diary_uwp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:diary_uwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="3611">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DatePicker x:Name="datePicker" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <InkToolbar x:Name="inkToolbar"
+                    TargetInkCanvas="{x:Bind inkCanvas}"
+                    InitialControls="None"
+                    Grid.Row="0">
+                    <InkToolbarBallpointPenButton/>
+                    <InkToolbarHighlighterButton/>
+                    <InkToolbarEraserButton/>
+                </InkToolbar>
+
+                <ScrollViewer x:Name="scrollViewer"
+                          Grid.Row="1"
+                          VerticalScrollBarVisibility="Visible"
+                          VerticalScrollMode="Enabled"
+                          ZoomMode="Enabled"
+                          VerticalAlignment="Stretch"
+                          HorizontalScrollBarVisibility="Visible">
+                    <InkCanvas x:Name="inkCanvas" Height="5000" Width="1225" />
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
